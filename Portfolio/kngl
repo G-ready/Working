@@ -1,0 +1,34 @@
+<form class="contact-form">
+            <input type="text" name="name" id="name" autocomplete="off" placeholder="name">
+            <input type="text" name="email" id="email" autocomplete="off" placeholder="email">
+            <textarea name="msg" id="msg" placeholder="message" autocomplete="off"></textarea>
+            <button type="submit" class="form-submit-btn">contact</button>
+        </form>
+
+
+
+
+
+
+        <section class="contact-section">
+            <form class="contact-form" method = "post" action = "sendmail.php" >
+                <label for = "name" > Name: </label>
+                <input type = "text" name = "name" id = "name" required>
+                <label for = "email" > Email: </label>
+                <input type = "email" name = "email" id = "email" required>
+                <label for = "message" > Message: </label>
+                <textarea name = "message" id = "message" required></textarea>
+                <button type = ”submit” name = ”submit”> Submit </buton>
+             </form> 
+             <?php
+       if(isset($_POST['submit'])){
+          $name = $_POST['name'];
+          $email = $_POST['email'];
+          $message = $_POST['message'];
+          $to = "your-email@xyz.com";
+          $subject = "New Message from Contact Form";
+          $body = "Name : $nameEmail: $email$message";
+          mail($to,$subject,$body);
+          echo "Thank you for your message!";
+       }
+    ?>
